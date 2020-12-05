@@ -27,6 +27,11 @@ public class ProjectController {
 	private MapValidateErrorService mapValidationErrorService;
 
 	@PostMapping("")
+	// If we send empty object we get 500 Error(Internal server error) , if we use
+	// @Valid it gives 400 error(bad request) i.e It makes response a little clear
+
+	// Binding Result contains the validation object , if the object has errors then
+	// it is mapped with Binding Result which we can use for better response object
 	public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult bindingResult) {
 
 		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidateError(bindingResult);
@@ -54,5 +59,5 @@ public class ProjectController {
 		return new ResponseEntity<Object>("Project with projectId" + projectId + " successfully deleted",
 				HttpStatus.OK);
 	}
-	
+
 }
