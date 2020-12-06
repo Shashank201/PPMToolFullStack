@@ -15,13 +15,9 @@ function App() {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route path="/addProject">
-              <AddProject />
-            </Route>
+            <Route path="/addProject" component={AddProject} />
 
-            <Route path="/dashboard">
-              <Dashboard />
-            </Route>
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </BrowserRouter>
       </div>
