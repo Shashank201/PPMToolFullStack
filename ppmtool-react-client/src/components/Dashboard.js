@@ -35,7 +35,7 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  getProject: PropTypes.func.isRequired,
+  getProjects: PropTypes.func.isRequired,
   project: PropTypes.object.isRequired,
 };
 

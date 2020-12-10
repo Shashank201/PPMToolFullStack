@@ -12,6 +12,7 @@ class UpdateProject extends Component {
     description: "",
     start_date: "",
     end_date: "",
+    errors: {},
   };
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class UpdateProject extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps) {
+    if (nextProps.project) {
       const {
         id,
         projectName,
@@ -43,6 +44,10 @@ class UpdateProject extends Component {
         end_date,
       });
     }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onSubmit = (e) => {
@@ -60,6 +65,7 @@ class UpdateProject extends Component {
   };
 
   render() {
+    const { errors } = this.state;
     return (
       <div className="container">
         <div className="project">
@@ -71,52 +77,69 @@ class UpdateProject extends Component {
                 <div className="form-group">
                   <input
                     type="text"
-                    className="form-control form-control-lg "
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.projectName,
+                    })}
                     placeholder="Project Name"
                     name="projectName"
                     value={this.state.projectName}
                     onChange={this.onFieldChangeHandler}
                   />
+                  <span className="invalid-feedback">{errors.projectName}</span>
                 </div>
                 <div className="form-group">
                   <input
                     type="text"
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.projectIdentifier,
+                    })}
                     placeholder="Unique Project ID"
                     name="projectIdentifier"
                     disabled
                     value={this.state.projectIdentifier}
                     onChange={this.onFieldChangeHandler}
                   />
+                  <span className="invalid-feedback">
+                    {errors.projectIdentifier}
+                  </span>
                 </div>
                 <div className="form-group">
                   <textarea
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.description,
+                    })}
                     placeholder="Project Description"
                     name="description"
                     value={this.state.description}
                     onChange={this.onFieldChangeHandler}
                   ></textarea>
+                  <span className="invalid-feedback">{errors.description}</span>
                 </div>
                 <h6>Start Date</h6>
                 <div className="form-group">
                   <input
                     type="date"
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.start_date,
+                    })}
                     name="start_date"
                     value={this.state.start_date}
                     onChange={this.onFieldChangeHandler}
                   />
+                  <span className="invalid-feedback">{errors.start_date}</span>
                 </div>
                 <h6>Estimated End Date</h6>
                 <div className="form-group">
                   <input
                     type="date"
-                    className="form-control form-control-lg"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.end_date,
+                    })}
                     name="end_date"
                     value={this.state.end_date}
                     onChange={this.onFieldChangeHandler}
                   />
+                  <span className="invalid-feedback">{errors.end_date}</span>
                 </div>
 
                 <input
@@ -140,6 +163,7 @@ UpdateProject.propTypes = {
 
 const mapStateToProps = (state) => ({
   project: state.project.project,
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { getProject, createProject })(
