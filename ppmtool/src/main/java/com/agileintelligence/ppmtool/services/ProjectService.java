@@ -3,8 +3,10 @@ package com.agileintelligence.ppmtool.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.agileintelligence.ppmtool.domain.Backlog;
 import com.agileintelligence.ppmtool.domain.Project;
 import com.agileintelligence.ppmtool.exceptions.ProjectIdException;
+import com.agileintelligence.ppmtool.repositories.BacklogRepository;
 import com.agileintelligence.ppmtool.repositories.ProjectRepository;
 
 @Service
@@ -13,10 +15,28 @@ public class ProjectService {
 	@Autowired
 	private ProjectRepository projectRepository;
 
+	@Autowired
+	private BacklogRepository backlogRepository;
+
 	public Project saveOrUpdateProject(Project project) {
 
 		try {
-			project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+			String projectIdentifier = project.getProjectIdentifier().toUpperCase();
+			project.setProjectIdentifier(projectIdentifier);
+
+			// For new Project create new Backlog
+			if (project.getId() == null) {
+				Backlog backlog = new Backlog();
+				project.setBacklog(backlog);
+				backlog.setProject(project);
+				backlog.setProjectIdentifier(projectIdentifier);
+			}
+
+			// For Update Project we need to set the backlog otherwise it will be null 
+			if (project.getId() != null) {
+				project.setBacklog(backlogRepository.findByProjectIdentifier(projectIdentifier));
+			}
+
 			return projectRepository.save(project);
 		} catch (Exception e) {
 			throw new ProjectIdException(
