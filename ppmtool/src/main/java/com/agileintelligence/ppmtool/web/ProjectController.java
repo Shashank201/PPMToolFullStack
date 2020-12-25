@@ -1,5 +1,7 @@
 package com.agileintelligence.ppmtool.web;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,31 +36,33 @@ public class ProjectController {
 
 	// Binding Result contains the validation object , if the object has errors then
 	// it is mapped with Binding Result which we can use for better response object
-	public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult bindingResult) {
+	public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult bindingResult,
+			Principal principal) {
 
 		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidateError(bindingResult);
 
 		if (errorMap != null)
 			return errorMap;
 
-		return new ResponseEntity<Project>(projectService.saveOrUpdateProject(project), HttpStatus.CREATED);
+		return new ResponseEntity<Project>(projectService.saveOrUpdateProject(project, principal.getName()),
+				HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{projectId}")
-	public ResponseEntity<?> getProjectById(@PathVariable String projectId) {
-		Project project = projectService.findProjectByIdentifier(projectId);
+	public ResponseEntity<?> getProjectById(@PathVariable String projectId, Principal principal) {
+		Project project = projectService.findProjectByIdentifier(projectId, principal.getName());
 		return new ResponseEntity<Project>(project, HttpStatus.OK);
 	}
 
 	@GetMapping("/all")
-	public Iterable<Project> getAllProjects() {
-		return projectService.findAllProjects();
+	public Iterable<Project> getAllProjects(Principal principal) {
+		return projectService.findAllProjects(principal.getName());
 	}
 
 	@DeleteMapping("/{projectId}")
-	public ResponseEntity<?> deleteProjectById(@PathVariable String projectId) {
-		projectService.deleteProjectByIdentifier(projectId);
-		return new ResponseEntity<Object>("Project with projectId" + projectId + " successfully deleted",
+	public ResponseEntity<?> deleteProjectById(@PathVariable String projectId, Principal principal) {
+		projectService.deleteProjectByIdentifier(projectId, principal.getName());
+		return new ResponseEntity<Object>("Project with projectId '" + projectId.toUpperCase() + "' successfully deleted",
 				HttpStatus.OK);
 	}
 

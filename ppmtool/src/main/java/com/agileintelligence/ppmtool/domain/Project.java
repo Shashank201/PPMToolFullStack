@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -36,15 +37,22 @@ public class Project {
 	private Date start_date;
 	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date end_date;
-	@Column(updatable = false , nullable = false)
+	@Column(updatable = false, nullable = false)
 	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date created_At;
 	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date updated_At;
 
-	@OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL , mappedBy = "project")
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
 	@JsonIgnore
 	private Backlog backlog;
+
+	// Many to one
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	private User user;
+	
+	private String projectLeader;
 
 	public Project() {
 	}
@@ -129,6 +137,22 @@ public class Project {
 
 	public void setUpdated_At(Date updated_At) {
 		this.updated_At = updated_At;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getProjectLeader() {
+		return projectLeader;
+	}
+
+	public void setProjectLeader(String projectLeader) {
+		this.projectLeader = projectLeader;
 	}
 
 }
