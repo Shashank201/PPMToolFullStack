@@ -24,6 +24,12 @@ class ProjectBoard extends Component {
             {errors.projectNotFound}
           </div>
         );
+      } else if (errors?.projectIdentifier) {
+        boardContent = (
+          <div className="alert alert-danger text-center" role="alert">
+            {errors.projectIdentifier}
+          </div>
+        );
       } else {
         boardContent = (
           <div className="alert alert-info text-center" role="alert">

@@ -123,7 +123,7 @@ class UpdateProject extends Component {
                       "is-invalid": errors.start_date,
                     })}
                     name="start_date"
-                    value={this.state.start_date}
+                    value={this.state.start_date ? this.state.start_date : ""}
                     onChange={this.onFieldChangeHandler}
                   />
                   <span className="invalid-feedback">{errors.start_date}</span>
@@ -136,7 +136,7 @@ class UpdateProject extends Component {
                       "is-invalid": errors.end_date,
                     })}
                     name="end_date"
-                    value={this.state.end_date}
+                    value={this.state.end_date ? this.state.end_date : ""}
                     onChange={this.onFieldChangeHandler}
                   />
                   <span className="invalid-feedback">{errors.end_date}</span>

@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -41,9 +42,11 @@ public class ProjectTask {
 	@JoinColumn(name = "backlog_id", nullable = false, updatable = false)
 	@JsonIgnore
 	private Backlog backlog;
-
+	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date dueDate;
+	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date created_At;
+	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date updated_At;
 
 	@PrePersist

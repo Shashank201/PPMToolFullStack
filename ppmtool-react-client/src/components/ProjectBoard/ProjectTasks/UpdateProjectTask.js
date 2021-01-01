@@ -135,7 +135,7 @@ class UpdateProjectTask extends Component {
                     type="date"
                     className="form-control form-control-lg"
                     name="dueDate"
-                    value={this.state.dueDate}
+                    value={this.state.dueDate ? this.state.dueDate : ""}
                     onChange={this.onFieldChangeHandler}
                   />
                 </div>

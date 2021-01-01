@@ -4,24 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.agileintelligence.ppmtool.domain.Backlog;
-import com.agileintelligence.ppmtool.domain.Project;
 import com.agileintelligence.ppmtool.domain.ProjectTask;
 import com.agileintelligence.ppmtool.exceptions.ProjectNotFoundException;
-import com.agileintelligence.ppmtool.repositories.BacklogRepository;
-import com.agileintelligence.ppmtool.repositories.ProjectRepository;
 import com.agileintelligence.ppmtool.repositories.ProjectTaskRepository;
 
 @Service
 public class ProjectTaskService {
 
-	@Autowired
-	private BacklogRepository backlogRepository;
 
 	@Autowired
 	private ProjectTaskRepository projectTaskRepository;
-
-	@Autowired
-	private ProjectRepository projectRepository;
 
 	@Autowired
 	private ProjectService projectService;
