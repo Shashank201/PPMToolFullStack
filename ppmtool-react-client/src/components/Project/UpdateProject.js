@@ -84,6 +84,7 @@ class UpdateProject extends Component {
                     name="projectName"
                     value={this.state.projectName}
                     onChange={this.onFieldChangeHandler}
+                    title="Name is required"
                   />
                   <span className="invalid-feedback">{errors.projectName}</span>
                 </div>
@@ -112,6 +113,7 @@ class UpdateProject extends Component {
                     name="description"
                     value={this.state.description}
                     onChange={this.onFieldChangeHandler}
+                    title="Description is required"
                   ></textarea>
                   <span className="invalid-feedback">{errors.description}</span>
                 </div>

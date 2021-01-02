@@ -58,6 +58,7 @@ class AddProject extends Component {
                     name="projectName"
                     value={this.state.projectName}
                     onChange={this.onFieldChangeHandler}
+                    title="Name is required"
                   />
                   <span className="invalid-feedback">{errors.projectName}</span>
                 </div>
@@ -71,6 +72,7 @@ class AddProject extends Component {
                     name="projectIdentifier"
                     value={this.state.projectIdentifier}
                     onChange={this.onFieldChangeHandler}
+                    title="Unique ID must be of 4 to 5 characters"
                   />
                   <span className="invalid-feedback">
                     {errors.projectIdentifier}
@@ -88,6 +90,7 @@ class AddProject extends Component {
                     name="description"
                     value={this.state.description}
                     onChange={this.onFieldChangeHandler}
+                    title="Description is required"
                   ></textarea>
                   <span className="invalid-feedback">{errors.description}</span>
                 </div>

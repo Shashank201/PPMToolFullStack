@@ -117,6 +117,7 @@ class UpdateProjectTask extends Component {
                     placeholder="Project Task summary"
                     value={this.state.summary}
                     onChange={this.onFieldChangeHandler}
+                    title="Task summary is required"
                   />
                   <span className="invalid-feedback">{errors.summary}</span>
                 </div>
