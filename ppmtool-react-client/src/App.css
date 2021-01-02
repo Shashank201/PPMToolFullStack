@@ -30,9 +30,7 @@ img {
   /* background: url("../img/showcase.jpg") no-repeat; */
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+  min-height: 92vh;
 }
 
 .landing-inner {
@@ -60,6 +58,13 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+/* .landing-heading {
+  padding: 1vw;
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+} */
 
 .section-heading {
   padding: 1vw;
