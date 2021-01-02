@@ -95,7 +95,7 @@ img {
 
 .projectBoard {
   width: 80%;
-  margin: 3vh 1vh;
+  margin: 3vh auto;
   padding: 2vw;
   box-shadow: 0 0 22px -10px rgba(0, 0, 0, 0.6);
 }
