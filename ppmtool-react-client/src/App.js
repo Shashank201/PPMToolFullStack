@@ -14,16 +14,16 @@ import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProj
 import Landing from "./components/Layout/Landing";
 import Login from "./components/UserManagement/Login";
 import Register from "./components/UserManagement/Register";
-import { setTokenInHeader } from "./securityUtils/setTokenInHeader";
+import { setAuthToken } from "./axios";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
 import SecuredRoute from "./securityUtils/SecuredRoute";
 
-const jwtToken = localStorage.jwtToken;
+const jwtToken = localStorage.getItem("jwtToken");
 
 if (jwtToken) {
-  setTokenInHeader(jwtToken);
+  setAuthToken(jwtToken);
   const decoded_jwtToken = jwt_decode(jwtToken);
   store.dispatch({
     type: SET_CURRENT_USER,

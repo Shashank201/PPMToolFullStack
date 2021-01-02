@@ -1,0 +1,31 @@
+.projectItem {
+  width: 100%;
+  min-height: 20vh;
+  background-color: ghostwhite;
+  margin-bottom: 3vh;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.projectItem__identifier {
+  text-align: center;
+  padding: 2vw 1vw;
+}
+
+.projectItem__details {
+  padding: 2vw 1vw;
+  flex: 1;
+}
+
+@media only screen and (max-width: 800px) {
+  .projectItem {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .projectItem__details {
+    text-align: center;
+  }
+}

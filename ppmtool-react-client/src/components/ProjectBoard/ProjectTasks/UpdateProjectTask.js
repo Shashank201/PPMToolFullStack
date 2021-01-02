@@ -99,7 +99,7 @@ class UpdateProjectTask extends Component {
               >
                 Back to Project Board
               </Link>
-              <h4 className="display-4 text-center">Update Project Task</h4>
+              <h4 className="section-heading">UPDATE PROJECT TASK</h4>
               <p className="lead text-center">
                 <strong>
                   Project Name: {this.state.projectIdentifier} | Project Code:{" "}

@@ -1,0 +1,80 @@
+header {
+  background-color: #0a5cb4;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  border-bottom: 0.5vh solid red;
+  font-size: medium;
+}
+
+.logo {
+  padding: 1vw;
+}
+
+.logo > a > span {
+  font-size: medium;
+  color: white;
+}
+
+.menu-bar > a > span {
+  color: white;
+}
+
+header > span {
+  width: 100%;
+}
+
+.menu-bar {
+  display: flex;
+}
+
+.toggle-menu-button {
+  display: none;
+}
+
+.mob-menu {
+  position: absolute;
+  top: 8vh;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  z-index: 10000;
+  align-items: center;
+  padding: 5px 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+}
+
+.mob-menu > a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mob-menu > a > span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5vh;
+  color: white;
+}
+
+.mob-menu > a > span:hover {
+  background-color: rgb(15, 15, 34);
+}
+
+@media only screen and (max-width: 800px) {
+  .menu-bar {
+    display: none;
+  }
+  .toggle-menu-button {
+    display: block;
+    color: white;
+    padding: 1vw;
+    cursor: pointer;
+  }
+}

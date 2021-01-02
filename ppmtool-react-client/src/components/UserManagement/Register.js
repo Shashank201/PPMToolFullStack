@@ -42,7 +42,7 @@ class Register extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
+              <h1 className="section-heading">SIGN UP</h1>
               <p className="lead text-center">Create your Account</p>
               <form onSubmit={this.onFormSubmit}>
                 <div className="form-group">
@@ -55,6 +55,7 @@ class Register extends Component {
                     name="fullName"
                     value={this.state.fullName}
                     onChange={this.onFieldChangeHandler}
+                    title="Name"
                   />
                   <span className="invalid-feedback">{errors.fullName}</span>
                 </div>
@@ -68,6 +69,7 @@ class Register extends Component {
                     name="username"
                     value={this.state.username}
                     onChange={this.onFieldChangeHandler}
+                    title="Email"
                   />
                   <span className="invalid-feedback">{errors.username}</span>
                 </div>
@@ -81,6 +83,7 @@ class Register extends Component {
                     name="password"
                     value={this.state.password}
                     onChange={this.onFieldChangeHandler}
+                    title="Password must be atleast 6 characters"
                   />
                   <span className="invalid-feedback">{errors.password}</span>
                 </div>

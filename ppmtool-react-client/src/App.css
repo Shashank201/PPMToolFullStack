@@ -2,9 +2,6 @@ img {
   width: 100%;
 }
 
-.navbar {
-  background-color: #e3f2fd;
-}
 .fa.fa-edit {
   color: #18a2b9;
 }
@@ -62,4 +59,46 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+.section-heading {
+  padding: 1vw;
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.projects,
+.project,
+.login,
+.add-PBI,
+.register {
+  margin: 4vh auto;
+  padding: 4vh 0;
+  box-shadow: 0 0 22px -10px rgba(0, 0, 0, 0.6);
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login,
+.register {
+  width: 60%;
+  padding: 10vh 0;
+}
+
+.projectBoard {
+  width: 80%;
+  margin: 3vh 1vh;
+  padding: 2vw;
+  box-shadow: 0 0 22px -10px rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 800px) {
+  .login,
+  .register {
+    width: 90%;
+    padding: 10vh 0;
+  }
 }

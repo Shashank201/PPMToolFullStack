@@ -28,7 +28,7 @@ export default class Backlog extends Component {
           <div className="col-md-4">
             <div className="card text-center mb-2">
               <div className="card-header bg-secondary text-white">
-                <h3>TO DO</h3>
+                <h5>TO DO</h5>
               </div>
             </div>
 
@@ -39,7 +39,7 @@ export default class Backlog extends Component {
           <div className="col-md-4">
             <div className="card text-center mb-2">
               <div className="card-header bg-primary text-white">
-                <h3>In Progress</h3>
+                <h5>IN PROGRESS</h5>
               </div>
             </div>
             {inprogress_project_tasks}
@@ -48,7 +48,7 @@ export default class Backlog extends Component {
           <div className="col-md-4">
             <div className="card text-center mb-2">
               <div className="card-header bg-success text-white">
-                <h3>Done</h3>
+                <h5>DONE</h5>
               </div>
             </div>
             {done_project_tasks}

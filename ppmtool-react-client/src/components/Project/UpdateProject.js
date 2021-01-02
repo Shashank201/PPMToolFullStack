@@ -67,11 +67,11 @@ class UpdateProject extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="container">
-        <div className="project">
+      <div className="project">
+        <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h5 className="display-4 text-center">Update Project form</h5>
+              <h5 className="section-heading">UPDATE PROJECT</h5>
               <hr />
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">

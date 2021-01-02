@@ -53,7 +53,7 @@ class AddProjectTask extends Component {
               >
                 Back to Project Board
               </Link>
-              <h4 className="display-4 text-center">Add Project Task</h4>
+              <h4 className="section-heading">ADD PROJECT TASK</h4>
               <p className="lead text-center">
                 <strong>Project Name : {this.state.projectIdentifier}</strong>
               </p>

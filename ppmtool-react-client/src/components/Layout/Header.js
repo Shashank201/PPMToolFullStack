@@ -3,53 +3,51 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/securityActions";
+import "./Header.css";
 
 class Header extends Component {
+  state = {
+    showMobMenu: false,
+  };
+
+  toggleMobMenuHandler = () => {
+    let value = this.state.showMobMenu;
+    this.setState({ showMobMenu: !value });
+  };
+
   logoutHandler = () => this.props.logout();
   render() {
     const { validToken, user } = this.props.security;
 
     const userIsAuthenticated = (
-      <div className="collapse navbar-collapse" id="mobile-nav">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/dashboard">
-              Dashboard
-            </Link>
-          </li>
-        </ul>
+      <React.Fragment>
+        <Link className="nav-link" to="/dashboard">
+          <span>Dashboard</span>
+        </Link>
 
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/dashboard">
-              <i className="fas fa-user-circle mr-1" />
-              {user ? user.fullName : ""}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/" onClick={this.logoutHandler}>
-              Logout
-            </Link>
-          </li>
-        </ul>
-      </div>
+        <Link className="nav-link" to="/dashboard">
+          <span>
+            <i className="fas fa-user-circle mr-1" />
+            {user ? user.fullName : ""}
+          </span>
+        </Link>
+
+        <Link className="nav-link" to="/" onClick={this.logoutHandler}>
+          <span> Logout</span>
+        </Link>
+      </React.Fragment>
     );
 
     const userIsNotAuthenticated = (
-      <div className="collapse navbar-collapse" id="mobile-nav">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className="nav-link " to="/register">
-              Sign Up
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <React.Fragment>
+        <Link className="nav-link " to="/register">
+          <span>Sign Up</span>
+        </Link>
+
+        <Link className="nav-link" to="/login">
+          <span>Login</span>
+        </Link>
+      </React.Fragment>
     );
 
     let headerLinks;
@@ -61,22 +59,28 @@ class Header extends Component {
     }
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Personal Project Management Tool
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
+      <React.Fragment>
+        <header>
+          <div className="logo">
+            <Link className="navbar-brand" to="/">
+              <span>Personal Project Management Tool</span>
+            </Link>
+          </div>
+          <div className="menu-bar">{headerLinks}</div>
+
+          <div
+            className="toggle-menu-button"
+            onClick={this.toggleMobMenuHandler}
           >
-            <span className="navbar-toggler-icon" />
-          </button>
-          {headerLinks}
-        </div>
-      </nav>
+            <i className="fa fa-bars"></i>
+          </div>
+        </header>
+        {this.state.showMobMenu ? (
+          <div className="mob-menu">{headerLinks}</div>
+        ) : (
+          ""
+        )}
+      </React.Fragment>
     );
   }
 }
