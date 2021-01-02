@@ -5,7 +5,11 @@ import jwt_decode from "jwt-decode";
 
 export const createNewUser = (newUser, history) => async (dispatch) => {
   try {
-    await axios.post("http://localhost:8080/api/users/register", newUser);
+    await axios.post(
+      //"http://localhost:8080/api/users/register",
+      "https://svars8-ppmtool.herokuapp.com/api/users/register",
+      newUser
+    );
     history.push("/login");
     dispatch({
       type: GET_ERRORS,
@@ -23,7 +27,8 @@ export const loginUser = (loginRequest) => async (dispatch) => {
   try {
     // post => login request
     const res = await axios.post(
-      "http://localhost:8080/api/users/login",
+      //"http://localhost:8080/api/users/login",
+      "https://svars8-ppmtool.herokuapp.com/api/users/login",
       loginRequest
     );
     // extract token from res.data
